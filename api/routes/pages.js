@@ -36,7 +36,7 @@ router.post('/', async function (req, res, next) {
 
 router.get('/', async (_req, res, next) => {
   try {
-    const pages = await Page.findAll()
+    const pages = await Page.findAll({ include: [Category] })
     res.json(pages)
   } catch (error) {
     next(error)
